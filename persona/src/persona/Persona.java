@@ -276,6 +276,11 @@ public class Persona {
 
     }
 
+    
+    
+    public String getNombre() {
+         return this.nombre;
+    }
  
 
     /**
