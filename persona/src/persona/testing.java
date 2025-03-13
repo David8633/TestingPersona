@@ -1,3 +1,4 @@
+
 package personaTest;
 
 import static org.junit.Assert.assertTrue;
@@ -17,7 +18,9 @@ class testing {
 	private static Persona p2 = new Persona("Pepe",24,'H');
 	private static Persona p3 = new Persona("pili",17,'H');
 	private static Persona p4 = new Persona("Koi",-2,'M');
-	
+	private static Persona p5 = new Persona("Luca",24,'H',120,1.5);
+	private static Persona p6 = new Persona("Andi",17,'H',40,1.55);
+	private static Persona p7 = new Persona("Junajo",25,'M',78,1.85);
 
 
 	@Test
@@ -38,6 +41,18 @@ class testing {
 		assertThrows("la edad introducidad es unda edad invalida",p4.esMayorDeEdad());
 		
 	}
+	
+	
+	
+	@Test
+	void testCalcularIMC() {
+		assertEquals(p5.SOBREPESO,p5.calcularIMC());
+		assertEquals(p6.INFRAPESO,p6.calcularIMC());
+		assertEquals(p7.PESO_IDEAL,p7.calcularIMC());
+		assertNotEquals(p5.PESO_IDEAL,p5.calcularIMC());
+		assertNotEquals(p6.PESO_IDEAL,p6.calcularIMC());
+		assertNotEquals(p7.INFRAPESO,p7.calcularIMC());
+		}
 	
 	
 }
