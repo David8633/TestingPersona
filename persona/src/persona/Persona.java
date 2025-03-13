@@ -173,18 +173,30 @@ public class Persona {
      * @param peso de la persona
 
      * @param altura de la persona
+     *
+     * @throws pesoInvalidoException 
 
      */
 
-    public Persona(String nombre, int edad, char sexo, double peso, double altura) {
+    public Persona(String nombre, int edad, char sexo, double peso, double altura)  {
 
         this.nombre = nombre;
 
         this.edad = edad;
 
         this.peso = peso;
+        
 
         this.altura = altura;
+        
+        try {
+        	comprobarPeso();
+        	if(this.peso < 30 || this.peso<0 && this.edad>12) {
+        		throw new pesoInvalidoException();
+        	}
+        } catch (pesoInvalidoException e) {
+        	System.out.println(e.getLocalizedMessage());
+        }
 
         generarDni();
 
@@ -195,7 +207,13 @@ public class Persona {
     }
 
  
-
+    private void comprobarPeso() throws pesoInvalidoException {
+    	if(this.peso < 30 && this.edad>12) {
+    		throw new pesoInvalidoException();
+    	}
+    };
+    
+    
     //Métodos privados
 
     private void comprobarSexo() {
@@ -335,7 +353,12 @@ public class Persona {
 
     }
 
- 
+    
+    public double getPeso() {
+
+       return this.peso ;
+
+    }
 
     /**
 
@@ -353,7 +376,11 @@ public class Persona {
 
     }
 
- 
+    public double getAltura() {
+
+        return this.altura ;
+
+     }
 
     /**
 
