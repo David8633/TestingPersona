@@ -407,16 +407,18 @@ public class Persona {
 
      */
 
-    public boolean esMayorDeEdad() {
+    public boolean esMayorDeEdad() throws invalidadEdadException{
 
         boolean mayor = false;
-
+        if(edad>0) {
         if (edad >= 18) {
 
             mayor = true;
 
         }
-
+        }else {
+        	throw new invalidadEdadException();
+        }
         return mayor;
 
     }
