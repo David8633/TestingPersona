@@ -184,17 +184,16 @@ public class Persona {
 
         this.edad = edad;
 
-        this.peso = peso;
-        
-
-        this.altura = altura;
-        
         try {
-        	comprobarPeso();
+        	this.peso = peso;
+        	this.altura = altura;
         	if(this.peso < 30 || this.peso<0 && this.edad>12) {
         		throw new pesoInvalidoException();
         	}
-        } catch (pesoInvalidoException e) {
+        	else if((this.altura < 1.00 && this.edad < 6)) {
+        		throw new alturaIntroducidaException();
+        	}
+        } catch (pesoInvalidoException | alturaIntroducidaException e) {
         	System.out.println(e.getLocalizedMessage());
         }
 
@@ -207,11 +206,7 @@ public class Persona {
     }
 
  
-    private void comprobarPeso() throws pesoInvalidoException {
-    	if(this.peso < 30 && this.edad>12) {
-    		throw new pesoInvalidoException();
-    	}
-    };
+  
     
     
     //Métodos privados
